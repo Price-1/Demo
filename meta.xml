@@ -1,0 +1,7 @@
+<meta>
+    <info name="Demo Roleplay" description="" type="gamemode"/>
+
+    <script src="bin/Debug/netcoreapp3.1/Demo.dll"/>
+
+   
+</meta>
