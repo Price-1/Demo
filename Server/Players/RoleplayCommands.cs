@@ -4,8 +4,6 @@ using System.Text;
 using GTANetworkAPI;
 using Demo.Server.Libraries;
 using Demo.Server.Players.Accounts;
-using static Demo.Server.Libraries.AdminLibrary;
-using static Demo.Server.Players.Accounts.AccountManager;
 
 namespace Demo.Server.Players
 {
@@ -14,7 +12,6 @@ namespace Demo.Server.Players
         [Command("me", "~o~USAGE:~s~ /me [action]", GreedyArg = true)]
         public static void RoleplayCommand_Me(Player player, string action)
         {
-            if (!player.IsLoggedIn()) return;
 
             string roleplayLine = String.Format("** {0} {1}", player.Name, action);
 
@@ -24,7 +21,6 @@ namespace Demo.Server.Players
         [Command("meclose", "~o~USAGE:~s~ /melow [action]", Alias = "mec", GreedyArg = true)]
         public static void RoleplayCommand_MeClose(Player player, string action)
         {
-            if (!player.IsLoggedIn()) return;
 
             string roleplayLine = String.Format("** {0} {1}", player.Name, action);
 
@@ -34,7 +30,6 @@ namespace Demo.Server.Players
         [Command("meloud", "~o~USAGE:~s~ /meloud [action]", Alias = "mel", GreedyArg = true)]
         public static void RoleplayCommand_Meloud(Player player, string action)
         {
-            if (!player.IsLoggedIn()) return;
 
             string roleplayLine = String.Format("** {0} {1}", player.Name, action);
 
@@ -44,7 +39,6 @@ namespace Demo.Server.Players
         [Command("my", "~o~USAGE:~s~ /my [action]", GreedyArg = true)]
         public static void RoleplayCommand_My(Player player, string action)
         {
-            if (!player.IsLoggedIn()) return;
 
             string roleplayLine = string.Format("** {0}'s {1}", player.Name, action);
 
@@ -54,7 +48,6 @@ namespace Demo.Server.Players
         [Command("myclose", "~o~USAGE:~s~ /myclose [action]", Alias = "myc", GreedyArg = true)]
         public static void RoleplayCommand_MyClose(Player player, string action)
         {
-            if (!player.IsLoggedIn()) return;
 
             string roleplayLine = string.Format("** {0}'s {1}", player.Name, action);
 
@@ -64,7 +57,6 @@ namespace Demo.Server.Players
         [Command("myloud", "~o~USAGE:~s~ /myloud [action]", Alias = "myl", GreedyArg = true)]
         public static void RoleplayCommand_MyLoud(Player player, string action)
         {
-            if (!player.IsLoggedIn()) return;
 
             string roleplayLine = string.Format("** {0}'s {1}", player.Name, action);
 
@@ -74,7 +66,6 @@ namespace Demo.Server.Players
         [Command("do", "~o~USAGE:~s~ /do [action]", GreedyArg = true)]
         public static void RoleplayCommand_Do(Player player, string action)
         {
-            if (!player.IsLoggedIn()) return;
 
             string roleplayLine = string.Format("** {0}", action);
 
@@ -84,7 +75,6 @@ namespace Demo.Server.Players
         [Command("doclose", "~o~USAGE:~s~ /dolow [action]", Alias = "doc", GreedyArg = true)]
         public static void RoleplayCommand_DoClose(Player player, string action)
         {
-            if (!player.IsLoggedIn()) return;
 
             string roleplayLine = string.Format("** {0}", action);
 
@@ -94,7 +84,6 @@ namespace Demo.Server.Players
         [Command("doloud", "~o~USAGE:~s~ /doloud [action]", Alias = "dol", GreedyArg = true)]
         public static void RoleplayCommand_DoLoud(Player player, string action)
         {
-            if (!player.IsLoggedIn()) return;
 
             string roleplayLine = string.Format("** {0}", action);
 
@@ -104,7 +93,6 @@ namespace Demo.Server.Players
         [Command("shout", "~o~USAGE:~s~ /shout [speech]", Alias = "yell,scream", GreedyArg = true)]
         public static void ChatCommand_Shout(Player player, string message)
         {
-            if (!player.IsLoggedIn()) return;
 
             string roleplayLine = string.Format("{0} shouts: {1}", player.Name, message);
 
@@ -114,7 +102,6 @@ namespace Demo.Server.Players
         [Command("low", "~o~USAGE:~s~ /low [speech]", Alias = "quiet,mumble", GreedyArg = true)]
         public static void ChatCommand_Low(Player player, string message)
         {
-            if (!player.IsLoggedIn()) return;
 
             string roleplayLine = string.Format("{0} says quietly: {1}", player.Name, message);
 
@@ -124,7 +111,6 @@ namespace Demo.Server.Players
         [Command("goto", "/goto [x] [y] [z]", Alias = "tp", GreedyArg = true)]
         public static void Command_Goto(Player player, string x, string y, string z)
         {
-            if (player.GetAccount().AdminRank > AdminRank.RANK_DEFAULT)
             player.Position = new Vector3(Convert.ToSingle(x), Convert.ToSingle(y), Convert.ToSingle(z));
             player.Dimension = 0;
             NAPI.Chat.SendChatMessageToPlayer(player, "You have been teleported.");

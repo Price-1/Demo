@@ -19,46 +19,6 @@ namespace Demo.Server.Libraries
             public static string COLOR_DISTANT_ROLEPLAY = "!{#C8BED4}";
         }
 
-        public static List<Player> GetAdminPlayers(int adminRank)
-        {
-            List<Player> adminPlayers = new List<Player>();
-            foreach (KeyValuePair<Player, Database.DataModels.Account> adminPlayer in AccountManager.PlayerAccountDictionary)
-            {
-                if (adminPlayer.Value.AdminRank >= adminRank)
-                    adminPlayers.Add(adminPlayer.Key);
-            }
-            return adminPlayers;
-        }
-
-        /// <summary>
-        /// Sends a chat message to all players with access to the general admin chat.
-        /// </summary>
-        /// <param name="player">The admin that sent the message.</param>
-        /// <param name="message">The message being sent to other admins.</param>
-        public static void SendAdminChat(String message)
-        {
-            List<Player> adminPlayers = GetAdminPlayers(AdminLibrary.AdminRank.RANK_LEVEL1);
-
-            foreach (Player adminPlayer in adminPlayers)
-            {
-
-                if (adminPlayer.GetAdminRank() < AdminRank.RANK_LEVEL2)
-                { string playerStringHex = AdminColors.COLOR_SUPPORT; }
-
-                else if (adminPlayer.GetAdminRank() < AdminRank.RANK_LEADADMIN)
-                { string playerStringHex = AdminColors.COLOR_ADMIN; }
-
-                else if (adminPlayer.GetAdminRank() < AdminRank.RANK_MANAGEMENT)
-                { string playerStringHex = AdminColors.COLOR_LEADADMIN; }
-
-                else
-                { string playerStringHex = AdminColors.COLOR_MANAGEMENT; }
-
-                NAPI.Chat.SendChatMessageToPlayer(adminPlayer, adminPlayer.GetAdminName() + ": " + message);
-            }
-
-        }
-
         /// <summary>
         /// Given a source player, sends speech to local players.
         /// </summary>
