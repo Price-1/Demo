@@ -4,7 +4,6 @@ using System.Text;
 using GTANetworkAPI;
 using Demo.Server.Players.Accounts;
 using Demo.Server.Libraries;
-using static Demo.Server.Libraries.AdminLibrary;
 
 namespace Demo.Server.Libraries
 {
