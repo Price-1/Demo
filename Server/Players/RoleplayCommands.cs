@@ -101,7 +101,6 @@ namespace Demo.Server.Players
             ChatLibrary.SendProximityRoleplay(player, 30, roleplayLine);
         }
            
-
         [Command("shout", "~o~USAGE:~s~ /shout [speech]", Alias = "yell,scream", GreedyArg = true)]
         public static void ChatCommand_Shout(Player player, string message)
         {
